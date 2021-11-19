@@ -40,7 +40,7 @@ var storage = multer.diskStorage({
 
 // test path
 app.get("/", function (req, res) {
-  res.json("File Uplaod Server is Runing!");
+  res.json("Lottie File Server is Runing!");
 });
 
 const upload = multer({ storage: storage });
@@ -48,9 +48,12 @@ const upload = multer({ storage: storage });
 app.post("/animation", upload.single("animation"), function (req, res) {
   try {
     let filePath = req.file.path.toString();
+    console.log(filePath);
     filePath = filePath.replace("public\\", "");
+    console.log(filePath);
     res.json(filePath);
   } catch (error) {
+    res.staus(500).json("error");
     console.error("**********Error Uploading File**********", error);
   }
 });
