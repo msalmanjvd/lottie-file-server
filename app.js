@@ -33,21 +33,7 @@ app.get("/", function (req, res) {
   res.json("Lottie File Server is Runing!");
 });
 
-// path for Uploading file
-// app.post("/upload/animation", upload.single("animation"), function (req, res) {
-//   try {
-//     let filePath = req.file.path.toString();
-//     console.log(filePath);
-//     filePath = filePath.replace("public\\", "");
-//     console.log(filePath);
-//     res.json(filePath);
-//   } catch (error) {
-//     console.error("**********Error Uploading File**********", error);
-//     res.staus(500).json("error");
-//   }
-// });
-
-// router for file manipulation
+// router for file manipulations and uploading
 app.use(fileRouter);
 
 // catch 404 and forward to error handler

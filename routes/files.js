@@ -25,12 +25,11 @@ router.post(
   function (req, res) {
     try {
       let filePath = req.file.path.toString();
-      console.log(filePath);
+      // remove public from path as its regsitered to be accessed directly
       filePath = filePath.replace("public/", "");
-      console.log(filePath);
       res.json(filePath);
     } catch (error) {
-      console.error("**********Error Uploading File**********", error);
+      console.error("*Error Uploading File*", error);
       res.staus(500).json("error");
     }
   }
