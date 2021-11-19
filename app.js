@@ -27,36 +27,25 @@ app.use(express.static(path.join(__dirname, "public")));
 /**
  * @multer configuraiton for file uplaod
  */
-const multer = require("multer");
-
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/data/uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname); //Appending extension
-  },
-});
 
 // test path
 app.get("/", function (req, res) {
   res.json("Lottie File Server is Runing!");
 });
 
-const upload = multer({ storage: storage });
 // path for Uploading file
-app.post("/animation", upload.single("animation"), function (req, res) {
-  try {
-    let filePath = req.file.path.toString();
-    console.log(filePath);
-    filePath = filePath.replace("public\\", "");
-    console.log(filePath);
-    res.json(filePath);
-  } catch (error) {
-    res.staus(500).json("error");
-    console.error("**********Error Uploading File**********", error);
-  }
-});
+// app.post("/upload/animation", upload.single("animation"), function (req, res) {
+//   try {
+//     let filePath = req.file.path.toString();
+//     console.log(filePath);
+//     filePath = filePath.replace("public\\", "");
+//     console.log(filePath);
+//     res.json(filePath);
+//   } catch (error) {
+//     console.error("**********Error Uploading File**********", error);
+//     res.staus(500).json("error");
+//   }
+// });
 
 // router for file manipulation
 app.use(fileRouter);
