@@ -26,7 +26,7 @@ router.post(
     try {
       let filePath = req.file.path.toString();
       console.log(filePath);
-      filePath = filePath.replace("public\\", "");
+      filePath = filePath.replace("public/", "");
       console.log(filePath);
       res.json(filePath);
     } catch (error) {
