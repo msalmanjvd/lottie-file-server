@@ -10,10 +10,10 @@ var fileRouter = require("./routes/files");
 require("dotenv").config();
 
 var app = express();
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(cors());
 
 // view engine setup
